@@ -1,6 +1,7 @@
 package br.eti.gabrieljuliobs.banco.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -14,15 +15,18 @@ public class Conta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @JsonIgnore
     @NotNull
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    @JsonIgnore
     @NotNull
     @OneToMany(mappedBy = "conta")
     private List<Cartao> cartoes;

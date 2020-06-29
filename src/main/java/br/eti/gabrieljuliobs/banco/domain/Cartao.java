@@ -13,11 +13,11 @@ public class Cartao {
     private Integer id;
     private String cvv;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "conta_id")
     private Conta conta;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "cartao")
     private List<Fatura> faturas;
 

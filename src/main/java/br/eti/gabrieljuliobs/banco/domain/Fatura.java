@@ -1,6 +1,6 @@
 package br.eti.gabrieljuliobs.banco.domain;
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,6 +15,7 @@ public class Fatura {
     private Date data;
     private Double valor;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cartao_id")
     private Cartao cartao;

@@ -1,5 +1,7 @@
 package br.eti.gabrieljuliobs.banco.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -12,6 +14,7 @@ public class Endereco {
     private String nome;
     private String cep;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
