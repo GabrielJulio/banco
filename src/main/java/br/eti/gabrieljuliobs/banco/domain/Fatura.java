@@ -12,8 +12,11 @@ public class Fatura {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Date data;
-    private Double valor;
+    private Date dataVencimento;
+    private Date dataPagamento;
+    private double juros;
+    private boolean estado;
+    private Double total;
 
     @JsonIgnore
     @ManyToOne
@@ -23,10 +26,13 @@ public class Fatura {
     public Fatura() {
     }
 
-    public Fatura(Integer id, Date data, Double valor, Cartao cartao) {
+    public Fatura(Integer id, Date dataVencimento, Date dataPagamento, double juros, boolean estado, Double total, Cartao cartao) {
         this.id = id;
-        this.data = data;
-        this.valor = valor;
+        this.dataVencimento = dataVencimento;
+        this.dataPagamento = dataPagamento;
+        this.juros = juros;
+        this.estado = estado;
+        this.total = total;
         this.cartao = cartao;
     }
 
@@ -38,20 +44,44 @@ public class Fatura {
         this.id = id;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDataVencimento() {
+        return dataVencimento;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
     }
 
-    public Double getValor() {
-        return valor;
+    public Date getDataPagamento() {
+        return dataPagamento;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(double juros) {
+        this.juros = juros;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public Cartao getCartao() {

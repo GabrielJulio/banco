@@ -3,6 +3,7 @@ package br.eti.gabrieljuliobs.banco.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,11 @@ public class Cartao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String cvv;
+    private Integer numero;
+    private Date vencimento;
+    private String nomeCliente;
+    private Integer cod;
+    private String senha;
 
     @JsonIgnore
     @ManyToOne
@@ -24,9 +29,13 @@ public class Cartao {
     public Cartao() {
     }
 
-    public Cartao(Integer id, String cvv, Conta conta, List<Fatura> faturas) {
+    public Cartao(Integer id, Integer numero, Date vencimento, String nomeCliente, Integer cod, String senha, Conta conta, List<Fatura> faturas) {
         this.id = id;
-        this.cvv = cvv;
+        this.numero = numero;
+        this.vencimento = vencimento;
+        this.nomeCliente = nomeCliente;
+        this.cod = cod;
+        this.senha = senha;
         this.conta = conta;
         this.faturas = faturas;
     }
@@ -39,12 +48,44 @@ public class Cartao {
         this.id = id;
     }
 
-    public String getCvv() {
-        return cvv;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public Date getVencimento() {
+        return vencimento;
+    }
+
+    public void setVencimento(Date vencimento) {
+        this.vencimento = vencimento;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public Integer getCod() {
+        return cod;
+    }
+
+    public void setCod(Integer cod) {
+        this.cod = cod;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public Conta getConta() {

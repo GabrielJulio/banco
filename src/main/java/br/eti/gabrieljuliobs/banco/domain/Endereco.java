@@ -11,8 +11,11 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String nome;
-    private String cep;
+    private String logradouro;
+    private String numero;
+    private String bairro;
+    private String cidade;
+    private String estado;
 
     @JsonIgnore
     @ManyToOne
@@ -22,10 +25,13 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(Integer id, String nome, String cep, Cliente cliente) {
+    public Endereco(Integer id, String logradouro, String numero, String bairro, String cidade, String estado, Cliente cliente) {
         this.id = id;
-        this.nome = nome;
-        this.cep = cep;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
         this.cliente = cliente;
     }
 
@@ -37,20 +43,44 @@ public class Endereco {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
-    public String getCep() {
-        return cep;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Cliente getCliente() {

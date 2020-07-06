@@ -1,6 +1,5 @@
 package br.eti.gabrieljuliobs.banco.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
@@ -15,10 +14,15 @@ public class Conta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private Integer numero;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    private double saldo;
+    private boolean estado;
 
     @JsonIgnore
     @NotNull
@@ -34,9 +38,12 @@ public class Conta {
     public Conta() {
     }
 
-    public Conta(Integer id, Cliente cliente, Categoria categoria, List<Cartao> cartoes) {
+    public Conta(Integer id, Integer numero, Cliente cliente, double saldo, boolean estado, Categoria categoria, List<Cartao> cartoes) {
         this.id = id;
+        this.numero = numero;
         this.cliente = cliente;
+        this.saldo = saldo;
+        this.estado = estado;
         this.categoria = categoria;
         this.cartoes = cartoes;
     }
@@ -49,12 +56,36 @@ public class Conta {
         this.id = id;
     }
 
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public Categoria getCategoria() {
